@@ -1,59 +1,25 @@
 import Layout from "./shared/Layout";
-import React, { useState } from "react";
-import { Form, Button, Alert, Row, Col } from "react-bootstrap";
+import React from "react";
+import { Form, Button, Row, Col } from "react-bootstrap";
 
-import api from "./api";
-import util from "./util";r
-import { useHistory } from "react-router-dom";
+import FormError from './FormError';
 
-export default () => {
-  const [project, setproject] = useState({});
-  const history = useHistory();
+export default (props) => {
+  const project = props.formData || {};
 
-  const [error, seterror] = useState();
-
-  const handleSubmit = async (evt) => {
-    evt.preventDefault();
-
-    try {
-      await api.createProject(project);
-      history.push("/");
-    } catch (er) {
-      seterror(er.errors);
-    }
-  };
-
-  const handleInputChange = (evt) => {
-    const name = evt.currentTarget.name;
-    const value = evt.currentTarget.value;
-    if (name === "authors") {
-      project.authors = project.authors || [];
-      project.authors = value.split(",").map((v) => v.trim());
-    } else if (name === "tags") {
-      project.tags = project.tags || [];
-      project.tags = value.split(" ");
-    } else {
-      project[name] = value;
-    }
-    setproject({ ...project });
-  };
-  if (!util.activeSession()) {
-    history.push("/login");
-  }
   return (
-    <Layout>
-      {error && error.length > 0 && <Alert variant="danger">{error}</Alert>}
+    <Layout {...props}>
+      <FormError error={props.error} />
       <Row>
         <Col>
           <h3 className="mb-4">Submit Project</h3>
-          <Form id="createProjectForm" onSubmit={handleSubmit}>
+          <Form id="createProjectForm" method="post" action="/projects/submit">
             <Form.Group>
               <Form.Label>Project name</Form.Label>
               <Form.Control
                 type="text"
                 name="name"
                 placeholder="Enter project name"
-                onChange={handleInputChange}
                 defaultValue={project ? project.name : ""}
                 required
               />
@@ -62,7 +28,6 @@ export default () => {
               <Form.Label>Project abstract</Form.Label>
               <Form.Control
                 as="textarea"
-                onChange={handleInputChange}
                 name="abstract"
                 rows="7"
                 defaultValue={project ? project.abstract : ""}
@@ -74,7 +39,6 @@ export default () => {
               <Form.Control
                 type="text"
                 name="authors"
-                onChange={handleInputChange}
                 placeholder="Enter author names (seperated by comma)"
                 defaultValue={
                   project && project.authors ? project.authors.join(",") : ""
@@ -87,7 +51,6 @@ export default () => {
               <Form.Control
                 type="text"
                 name="tags"
-                onChange={handleInputChange}
                 placeholder="Use # to tag project with different topics (e.g. #javascript #mongodb)"
                 defaultValue={
                   project && project.tags ? project.tags.join(" ") : ""
