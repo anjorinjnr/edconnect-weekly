@@ -26,10 +26,14 @@ router.get("/signup", (req, res) => {
 });
 
 router.post("/signup", (req, res) => {
-  const [valid, resp] = userService.create(req.body);
+
+  const data = req.body
+  data.firstname = data.firstname || data.firstName;
+  data.lastname = data.lastname || data.lastName;
+  
+  const [valid, resp] = userService.create(data);
   if (valid) {
     req.session.user = resp;
-    console.log("resp", resp);
     return res.redirect("/");
   } else {
     req.flash("error", resp);

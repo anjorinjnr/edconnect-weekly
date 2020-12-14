@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Nav, Navbar, Form, FormControl, Button } from "react-bootstrap";
 export default ({user}) => {
-console.log('user', user)
 
   return (
     <Navbar bg="primary" variant="dark" className="justify-content-between">
@@ -28,7 +27,7 @@ console.log('user', user)
             Logout
           </Nav.Link>
           <Nav.Link id="username">
-            Hi {user.firstname}
+            Hi, {user.firstname}
           </Nav.Link>
         </Nav>
       ) : (

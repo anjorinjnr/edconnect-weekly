@@ -20,7 +20,7 @@ export default (props) => {
                 <Form.Label>First name</Form.Label>
                 <Form.Control
                   type="text"
-                  name="firstname"
+                  name="firstName"
                   placeholder="First name"
                   defaultValue={user.firstname || ""}
                   
@@ -32,8 +32,7 @@ export default (props) => {
                 <Form.Label>Last name</Form.Label>
                 <Form.Control
                   type="text"
-                  name="lastname"
-                 
+                  name="lastName"
                   defaultValue={user.lastname || ""}
                   placeholder="Last name"
                   required
