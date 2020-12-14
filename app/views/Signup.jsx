@@ -14,7 +14,7 @@ export default (props) => {
         <Col>
           <h3>Sign up</h3>
           <FormError error={props.error} />
-          <Form method="post" action="signup">
+          <Form method="post" action="signup" id="signupForm">
             <Form.Row>
               <Form.Group as={Col}>
                 <Form.Label>First name</Form.Label>
