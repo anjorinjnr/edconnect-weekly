@@ -14,7 +14,7 @@ router.get("/project/:id", (req, res) => {
 
 router.get("/projects/submit", (req, res) => {
   if (!req.session.user) {
-    return req.redirect("/");
+    return res.redirect("/");
   }
   const error = req.flash("error");
   let formData = req.flash("login_form_data");

@@ -6,7 +6,6 @@ const projectService = require('../services/project')
 router.get('/', (req, res) => {
     const projects = projectService.getAll()
     const user = req.session.user;
-    console.log('>>', user)
     return res.render('Home', { projects, user })
 });
 
