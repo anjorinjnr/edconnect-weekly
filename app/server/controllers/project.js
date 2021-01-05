@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
-import projectService from "../services/project";
-import userService from "../services/user";
+const  projectService = require("../services/project");
+const userService = require( "../services/user");
 
 router.get("/project/:id", (req, res) => {
    const {id} = req.params;
