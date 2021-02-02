@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Project Explorer App</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+
+  <body>
+    <div>
+      <nav class="navbar navbar-expand navbar-dark bg-primary">
+        <a href="/project-explorer" class="navbar-brand">Project Explorer</a>
+        <form
+          method="get"
+          action="/project-explorer/search.html"
+          class="form-inline"
+        >
+          <input
+            type="text"
+            placeholder="Search Projects"
+            name="search"
+            class="mr-sm-2 form-control"
+          />
+          <input type="hidden" name="type" value="Name" />
+          <button type="submit" class="btn btn-outline-light">Search</button>
+        </form>
+        <div class="mr-auto navbar-nav">
+          <a href="/project-explorer/createProject.html" class="nav-link">
+            Submit
+          </a>
+        </div>
+        <div class="navbar-nav">
+          <a href="/project-explorer/register.html" class="nav-link">Sign up</a
+          ><a href="/project-explorer/login.html" class="nav-link">Login</a>
+        </div>
+      </nav>
+
+      <div class="my-3 container">
+        <div class="my-5 w-75 mx-auto row">
+          <div class="col">
+            <h3>Login</h3>
+            <form action="/login" method="post" class="">
+              <div class="form-group">
+                <label class="form-label">Email address</label
+                ><input
+                  type="email"
+                  name="email"
+                  placeholder="Enter email"
+                  class="form-control"
+                />
+              </div>
+              <div class="form-group">
+                <label class="form-label">Password</label
+                ><input
+                  type="password"
+                  name="password"
+                  placeholder="Password"
+                  class="form-control"
+                />
+              </div>
+              <button type="submit" class="btn btn-primary">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <nav class="navbar navbar-expand navbar-light bg-light">
+          <div class="justify-content-end navbar-collapse collapse">
+            <span class="navbar-text"
+              >Project Explorer © 2020 ·
+              <a href="https://edconnect.ng/" target="_blank"
+                >Edconnect</a
+              ></span
+            >
+          </div>
+        </nav>
+      </div>
+    </div>
+  </body>
+</html>
