@@ -237,7 +237,7 @@ const Home = {
       parent.classList.add("border", "p-3");
 
       const title = document.createElement("a");
-      title.href = `viewProject.html?id=${proj.id}`;
+      title.href = `viewproject.html?id=${proj.id}`;
       title.innerText = proj.name;
       parent.appendChild(title);
 
@@ -298,7 +298,7 @@ const App = {
       Login.init();
     }
 
-    if (path.includes("createProject.html")) {
+    if (path.includes("createproject.html")) {
       if (this.uid) {
         CreateProject.init();
       } else {
@@ -308,7 +308,7 @@ const App = {
     if (path.includes("index.html")) {
       Home.init();
     }
-    if (path.includes("viewProject.html")) {
+    if (path.includes("viewproject.html")) {
       ViewProject.init();
     }
   },
